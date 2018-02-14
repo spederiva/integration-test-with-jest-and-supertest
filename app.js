@@ -7,6 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //Routes
+app.use('/', require('./routes/isAlive'));
 app.use('/', require('./routes/user'));
 
 module.exports = app;

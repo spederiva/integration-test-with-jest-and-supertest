@@ -1,7 +1,5 @@
-// const app = require('../app');
-const supertest = require('supertest');
-const request = supertest('http://localhost:8080');
-// const request = supertest(app);
+// const request = require('./environment');
+import request from './environment';
 
 describe('UserService => Getting Something!', () => {
 	let response;
@@ -18,7 +16,7 @@ describe('UserService => Getting Something!', () => {
 		expect(response.statusCode).toBe(404);
 	});
 
-	test('Content Type is Json', ()=>{
+	test('Content Type is Json', () => {
 		// console.log(JSON.stringify(response));
 		expect(response.header['content-type']).toMatch('application/json');
 	})
@@ -27,6 +25,10 @@ describe('UserService => Getting Something!', () => {
 		// const response = await request.get('/user');
 
 		expect(response.statusCode).toBe(200);
+	});
+
+	test('Get User - Returns an Object', async () => {
+		expect(response.body).toBeDefined();
 	});
 
 	test('Get Users - Result Sebastian', () => {
