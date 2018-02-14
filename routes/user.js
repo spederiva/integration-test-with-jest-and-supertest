@@ -3,14 +3,19 @@ const router = express.Router();
 
 const services = require('../services/userService');
 
-router.get('/user', (req, resp) => {
+router.get('/user/:id', (req, resp) => {
+	console.log('GET /user/' + req.params.id);
 
-	resp.json(services.getUser());
+	resp.json(services.getUser(req.params.id));
 
 });
 
-// console.log(router);
-// console.log(router.params);
-// console.log(router.Function);
+
+router.post('/user', (req, resp) => {
+	console.log('POST /user/' + JSON.stringify(req.body));
+
+	resp.status(201).json(services.createUser(req.body));
+});
+
 
 module.exports = router;
