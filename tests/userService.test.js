@@ -2,7 +2,8 @@ const service = require('../services/userService');
 
 test('UserService => return user returns an pre-defined object', () => {
 
-	expect(service.getUser()).toEqual({
+	expect(service.getUser(1)).toEqual({
+		id: 1,
 		name: 'Sebastian',
 		age: 42,
 		isMarried: true,
@@ -14,18 +15,18 @@ test('UserService => return user returns an pre-defined object', () => {
 
 test('UserService => return user something', () => {
 
-	expect(service.getUser()).toEqual(expect.anything());
+	expect(service.getUser(1)).toEqual(expect.anything());
 
 });
 
 test('UserService => return user with name "Sebastian"', () => {
 
-	expect(service.getUser().name).toBe('Sebastian');
+	expect(service.getUser(1).name).toBe('Sebastian');
 
 });
 
 test('UserService => return user match object', () => {
-	expect(service.getUser()).toMatchObject({
+	expect(service.getUser(1)).toMatchObject({
 		name: 'Sebastian',
 		// age: 42,
 		// isMarried: true,
@@ -33,26 +34,3 @@ test('UserService => return user match object', () => {
 		// timeStamp: new Date('2018-02-11T09:47:22.369Z')
 	});
 });
-
-// ==========================================
-// test('UserService => return user returns an object containing values', () =>{
-// 	const onPress = jest.fn();
-
-// 	//simulatePresses(onPress);
-
-// 	expect(service.getUser()).toBeCalledWith(
-// 		expect.objectContaining({
-// 			name: expect.any(String),
-// 			// age: 42,
-// 			// isMarried: true,
-// 			// children: 3,
-// 			// timeStamp: new Date('2018-02-11T09:47:22.369Z')
-// 		}));
-
-// });
-
-// test('UserService => return user with name "Age"', () =>{
-
-// 	expect(service.getUser().age).toBe('Sebastian');
-
-// });

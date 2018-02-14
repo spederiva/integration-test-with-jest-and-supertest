@@ -7,23 +7,10 @@ describe('UserService => Getting Something!', () => {
 	let response;
 
 	beforeAll(async () => {
-		const resp = await request.get('/user');
+		const resp = await request.get('/user/1');
 
 		response = resp;
 	});
-
-	// // console.log('Start 2');
-	// test('General Checking - Promise', (done) => {
-	// 	return request.get('/').then((res) => {
-	// 		// console.log('xxxx');
-	// 		// console.log('err,res,status', res.statusCode);
-
-	// 		expect(res.statusCode).toBe(404);
-
-	// 		done();
-	// 	})
-
-	// })
 
 	test('General Checking - Async', async () => {
 		const response = await request.get('/');
